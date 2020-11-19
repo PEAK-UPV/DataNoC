@@ -50,3 +50,20 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# These vivado files should not be tracked. 
+*.xpr
+*.log
+*.jou
+*.wcfg
+
+# Nothing in the vivado data_noc genertated project should be tracked, as it can be generated
+data_noc.cache/**
+data_noc.hw/**
+data_noc.ip_usr_files/**
+data_noc.runs/**
+data_noc.sim/**
+
+# backup files
+*~
+.*.swp
