@@ -1,41 +1,43 @@
-//`ifdef BEHAVIORAL
-//	library UNISIM;
-//	use UNISIM.Vcomponents.all;
-//`endif
-
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// (c) Copyright 2012 - 2017  Parallel Architectures Group (GAP)
+///////////////////////////////////////////////////////////////////////////////
+// MIT License
+// 
+// Copyright (c) 2021 PEAK UPV
+// Parallel Architectures Group (GAP)
 // Department of Computing Engineering (DISCA)
 // Universitat Politecnica de Valencia (UPV)
 // Valencia, Spain
-// All rights reserved.
-//
-// All code contained herein is, and remains the property of
-// Parallel Architectures Group. The intellectual and technical concepts
-// contained herein are proprietary to Parallel Architectures Group and
-// are protected by trade secret or copyright law.
-// Dissemination of this code or reproduction of this material is
-// strictly forbidden unless prior written permission is obtained
-// from Parallel Architectures Group.
-//
-// THIS SOFTWARE IS MADE AVAILABLE "AS IS" AND IT IS NOT INTENDED FOR USE
-// IN WHICH THE FAILURE OF THE SOFTWARE COULD LEAD TO DEATH, PERSONAL INJURY,
-// OR SEVERE PHYSICAL OR ENVIRONMENTAL DAMAGE.
-//
-// contact: jflich@disca.upv.es
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+// 
 //-----------------------------------------------------------------------------
 //
-// Company:  GAP (UPV)
+// Company: GAP (UPV)  
 // Engineer: J. Flich (jflich@disca.upv.es)
-//
-// Create Date: 09/03/2013
-// Design Name:
-// Module Name:
-// Project Name:
+// Contact: J. Flich (jflich@disca.upv.es)
+// Create Date: September 3, 2013
+// File Name: va_dynamic.v
+// Module Name: VA_DYNAMIC
+// Project Name: DataNoC
 // Target Devices:
-// Tool Versions:
 // Description:
+//
+//
 //
 // Dependencies:
 //
@@ -44,6 +46,8 @@
 // Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
+
+`timescale 1ns / 1ps
 
 `include "macro_functions.h"
 `include "net_common.h"

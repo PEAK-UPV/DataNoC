@@ -1,41 +1,44 @@
-`ifndef __DATA_NET_MESSAGE_FORMAT_H__
-`define __DATA_NET_MESSAGE_FORMAT_H__
 ///////////////////////////////////////////////////////////////////////////////
-// (c) Copyright 2012 - 2017  Parallel Architectures Group (GAP)
+// DataNoC
+// 
+// Copyright (c) 2021 PEAK UPV
+// Parallel Architectures Group (GAP)
 // Department of Computing Engineering (DISCA)
 // Universitat Politecnica de Valencia (UPV)
 // Valencia, Spain
-// All rights reserved.
 // 
-// All code contained herein is, and remains the property of
-// Parallel Architectures Group. The intellectual and technical concepts
-// contained herein are proprietary to Parallel Architectures Group and 
-// are protected by trade secret or copyright law.
-// Dissemination of this code or reproduction of this material is 
-// strictly forbidden unless prior written permission is obtained
-// from Parallel Architectures Group.
-//
-// THIS SOFTWARE IS MADE AVAILABLE "AS IS" AND IT IS NOT INTENDED FOR USE
-// IN WHICH THE FAILURE OF THE SOFTWARE COULD LEAD TO DEATH, PERSONAL INJURY,
-// OR SEVERE PHYSICAL OR ENVIRONMENTAL DAMAGE.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 // 
-// contact: jflich@disca.upv.es
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+// 
 //-----------------------------------------------------------------------------
 //
-// Company:   GAP (UPV)  
-// Engineer:  R. Tornero (ratorga@disca.upv.es)
+// Company: GAP (UPV)  
+// Engineer: R. Tornero (ratorga@disca.upv.es)
+// Contact: J.Flich (jflich@disca.upv.es)
 // Create Date: November 11, 2016
 // File Name: data_net_message_format.h
-// Design Name: 
 // Module Name:
-// Project Name: 
+// Project Name: DataNoC
 // Target Devices: 
-// Tool Versions: 
 // Description: 
 //
 //  This file includes the definitions for the format of the DATA Messages
-//  interchanged among components of the same or differnt TILEs through
-//  a NI
+//  interchanged among components of the same or differnt TILEs through a NI
 //
 // Dependencies: 
 // 
@@ -45,7 +48,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-
+`ifndef __DATA_NET_MESSAGE_FORMAT_H__
+`define __DATA_NET_MESSAGE_FORMAT_H__
 
 // MSG types
 `define MSG_TYPE_0    2'b00         // Message type: read request, senders CORE (to TR) and L1I (to MC) (single flit message)

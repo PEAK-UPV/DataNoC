@@ -1,43 +1,47 @@
-`ifndef __DATA_NET_VIRTUAL_CHANNEL_H__
-`define __DATA_NET_VIRTUAL_CHANNEL_H__  
 ///////////////////////////////////////////////////////////////////////////////
-// (c) Copyright 2012 - 2017  Parallel Architectures Group (GAP)
+// DataNoC
+// 
+// Copyright (c) 2021 PEAK UPV
+// Parallel Architectures Group (GAP)
 // Department of Computing Engineering (DISCA)
 // Universitat Politecnica de Valencia (UPV)
 // Valencia, Spain
-// All rights reserved.
 // 
-// All code contained herein is, and remains the property of
-// Parallel Architectures Group. The intellectual and technical concepts
-// contained herein are proprietary to Parallel Architectures Group and 
-// are protected by trade secret or copyright law.
-// Dissemination of this code or reproduction of this material is 
-// strictly forbidden unless prior written permission is obtained
-// from Parallel Architectures Group.
-//
-// THIS SOFTWARE IS MADE AVAILABLE "AS IS" AND IT IS NOT INTENDED FOR USE
-// IN WHICH THE FAILURE OF THE SOFTWARE COULD LEAD TO DEATH, PERSONAL INJURY,
-// OR SEVERE PHYSICAL OR ENVIRONMENTAL DAMAGE.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 // 
-// contact: jflich@disca.upv.es
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+// 
 //-----------------------------------------------------------------------------
 //
-// Company:   GAP (UPV) 
-// Engineer:  R. Tornero (ratorga@disca.upv.es)
-// 
-// Create Date: 11.10.2016 16:43:24
-// Design Name: 
+// Company: GAP (UPV) 
+// Engineer: R. Tornero (ratorga@disca.upv.es)
+// Contact: J.Flich (jflich@disca.upv.es)
+// Create Date: October 11, 2016
 // File Name: data_net_virtual_channel.h
-// Project Name: 
+// Module Name:
+// Project Name: DataNoC
 // Target Devices: 
-// Tool Versions: 
 // Description: 
 //
-//    This file provides the parameters required for definining width, offsets and
-//    formats of a phit/flit data network with Virtual Channel support. Also, the
-//    format of the buses that connect the Routers (SW) among them and NI to SW is provided.
+//  This file provides the parameters required for definining width, offsets and
+//  formats of a phit/flit data network with Virtual Channel support. Also, the
+//  format of the buses that connect the Routers (SW) among them and NI to SW is provided.
 //
-//    It assumes the following macros or parameters are defined:
+//  It assumes the following macros or parameters are defined:
 //      `DATA_NET_FLIT_w or DATA_NET_FLIT_w, Flit size
 //      `DATA_NET_PHIT_w or DATA_NET_PHIT_w, Phit size
 //      `DATA_NET_FLIT_UNIT_ID_w or DATA_NET_FLIT_UNIT_ID_w, SRC/DST ID width
@@ -52,15 +56,15 @@
 //      `DATA_NET_VN_WITH_PRIORITIES (Optional) 
 //      `DATA_NET_VN_WEIGTH_PRIORITIES 2'd2, 2'd1,... (Optional)
 //
-//    The format of the SW<->SW and NI->SW bus (when DATA_NET_FLIT_w as physical transfer unit) is:
+//  The format of the SW<->SW and NI->SW bus (when DATA_NET_FLIT_w as physical transfer unit) is:
 //        Virtual Channel (VC_w) |  Broadcast (1) | Valid (1) | Go (NUM_VC) 
 //      | Flit (programable using DATA_NET_FLIT_w)
 //
-//    The format of the SW<->SW and NI->SW bus (when using DATA_NET_PHIT_w as physical transfer unit) is:
+//  The format of the SW<->SW and NI->SW bus (when using DATA_NET_PHIT_w as physical transfer unit) is:
 //        Virtual Channel (VC_w) | Broadcast (1) | Valid (1) | Go (NUM_VC) 
 //      | Phit (programable using DATA_NET_PHIT_w) 
 //
-//    The format of a flit is:
+//  The format of a flit is:
 //
 //        MSG_TYPE (DATA_NET_MSG_FLIT_MSG_TYPE_w) | (DST_UNIT_ID[DATA_NET_FLIT_UNIT_ID_w],DST_UNIT_TYPE[DATA_NET_FLIT_UNIT_TYPE_w]) 
 //        | (SRC_UNIT_ID[DATA_NET_FLIT_UNIT_ID_w],SRC_UNIT_TYPE[DATA_NET_FLIT_UNIT_TYPE_w]) | PADDING/PAYLOAD(DATA_NET_FLIT_w-MSG_TYPE_w-DST_w-SRC_w)
@@ -73,6 +77,9 @@
 // Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////
+
+`ifndef __DATA_NET_VIRTUAL_CHANNEL_H__
+`define __DATA_NET_VIRTUAL_CHANNEL_H__  
 
 `define DATA_NET_VC_SUPPORT
 
