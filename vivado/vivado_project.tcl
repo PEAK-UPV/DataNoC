@@ -103,9 +103,17 @@ add_files -norecurse -fileset $obj_sim $sim_verilog_files
 #add_files -norecurse -fileset $obj_xdc $xdc_synth_files
 #add_files -norecurse -fileset $obj_xdc $xdc_impl_files
 
+# add examples source files to project
+source ${ROOT_PATH}/sim_examples/tcl/sim_examples_src_files.tcl
+add_files -norecurse -fileset $obj_sim $sim_verilog_files
+#
+
 # switch and injector properties for the vivado project
 source ${ROOT_PATH}/src/switch_2dmesh_vc/tcl/switch_2dmesh_vc_project_properties.tcl
 source ${ROOT_PATH}/src/network_injector/tcl/network_injector_project_properties.tcl
+
+# examples properties for the vivado project
+source ${ROOT_PATH}/sim_examples/tcl/sim_examples_project_properties.tcl
 
 # Set 'sources_1' fileset properties
 set obj [get_filesets sources_1]
