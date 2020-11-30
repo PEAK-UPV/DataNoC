@@ -33,7 +33,7 @@
 // Create Date: November 2, 2016
 // File Name: data_net_virtual_channel.vh
 // Module Name:
-// Project Name:
+// Project Name: DataNoC
 // Target Devices:
 // Description:
 //
@@ -43,8 +43,8 @@
 //
 // Dependencies:
 //
-//		data_net_virtual_channel.h
-//		common_functions.vh
+//    data_net_virtual_channel.h
+//    common_functions.vh
 //
 // Revision:
 //
@@ -55,7 +55,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-localparam NUM_PORTS = `NUM_PORTS;									  // Number of ports used in this network
+//localparam NUM_PORTS = `NUM_PORTS;									  // Number of ports used in this network
 localparam NUM_PORTS_w = Log2_w(NUM_PORTS);							  // Number of bits needed to code NUM_PORTS number
 localparam bits_VC = Log2_w(NUM_VC);                       // Number of bits needed to code NUM_VC number
 localparam bits_VN = Log2_w(NUM_VN);
@@ -71,7 +71,7 @@ localparam long_VC_assigns_NI = ((bits_VN_X_VC+1) * NUM_VN_X_VC);   // Bits nede
 localparam long_VC_assigns_NI_per_VN = ((bits_VN_X_VC+1) * NUM_VC);  // The same last but only for one VN
 //localparam long_WEIGTHS = `DATA_NET_VN_PRIORITY_VECTOR_w;                     // Number of bits needed to code NUM_VC number into weitgths priorities vector
 localparam long_WEIGTHS = VN_WEIGHT_VECTOR_w;                     // Number of bits needed to code NUM_VC number into weitgths priorities vector
-localparam long_vector_grants_id = 3 * NUM_VN_X_VC;        // Number of bits needed to save the port id which is granted in each VC
+localparam long_vector_grants_id = NUM_PORTS_w * NUM_VN_X_VC;        // Number of bits needed to save the port id which is granted in each VC
 
 localparam FLIT_SIZE_VC = FLIT_SIZE * NUM_VN_X_VC;               // Size of full bus with all flit signals that belongs to each port
 localparam FLIT_TYPE_SIZE_VC = FLIT_TYPE_SIZE * NUM_VN_X_VC;     // Size of full bus with all flit_type signals that belongs to each port

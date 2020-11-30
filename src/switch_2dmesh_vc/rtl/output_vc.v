@@ -48,7 +48,6 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns / 1ps
-
 `include "macro_functions.h"
 `include "net_common.h"
 `include "net_2dmesh.h"
@@ -59,6 +58,7 @@ module OUTPUT_VC #(
   parameter FLIT_TYPE_SIZE     = 2,
   parameter BROADCAST_SIZE     = 5,
   parameter PHIT_SIZE          = 64,
+  parameter NUM_PORTS          = 5,
   parameter NUM_VC             = 1,                 // Number of Virtual Channels supported for each Virtual Network
   parameter NUM_VN             = 3,                  // Number of Virtual Networks supported
   parameter VN_WEIGHT_VECTOR_w = 20

@@ -59,6 +59,7 @@ parameter ID                 = 0,
 parameter FLIT_SIZE          = 64,
 parameter FLIT_TYPE_SIZE     = 2,
 parameter PHIT_SIZE          = 64,
+parameter NUM_PORTS          = 5,
 parameter NUM_VC             = 1,                 // Number of Virtual Channels supported for each Virtual Network
 parameter NUM_VN             = 3,                  // Number of Virtual Networks supported
 parameter BROADCAST_SIZE     = 5,

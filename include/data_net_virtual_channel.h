@@ -79,63 +79,63 @@
 //////////////////////////////////////////////////////////////////////////////
 
 `ifndef __DATA_NET_VIRTUAL_CHANNEL_H__
-`define __DATA_NET_VIRTUAL_CHANNEL_H__  
+`define __DATA_NET_VIRTUAL_CHANNEL_H__ 
 
 `define DATA_NET_VC_SUPPORT
 
 // * Defines support for Virtual Channels (compatibility)
 `define VC_SUPPORT
 
-// * defines the default input buffer size for datanet routers
-`ifndef DATA_NET_IB_QUEUE_SIZE
-  `define DATA_NET_IB_QUEUE_SIZE DATA_NET_IB_QUEUE_SIZE
-`endif
+// // * defines the default input buffer size for datanet routers
+// `ifndef DATA_NET_IB_QUEUE_SIZE
+//   `define DATA_NET_IB_QUEUE_SIZE DATA_NET_IB_QUEUE_SIZE
+// `endif
 
-// * defines the upper threshold for the Stop&Go flow control between datanet routers
-`ifndef DATA_NET_IB_SG_UPPER_THRESHOLD
-  `define DATA_NET_IB_SG_UPPER_THRESHOLD DATA_NET_IB_SG_UPPER_THRESHOLD
-`endif
+// // * defines the upper threshold for the Stop&Go flow control between datanet routers
+// `ifndef DATA_NET_IB_SG_UPPER_THRESHOLD
+//   `define DATA_NET_IB_SG_UPPER_THRESHOLD DATA_NET_IB_SG_UPPER_THRESHOLD
+// `endif
 
-// * defines the lower threshold for the Stop&Go flow control between datanet routers
-`ifndef DATA_NET_IB_SG_LOWER_THRESHOLD
-  `define DATA_NET_IB_SG_LOWER_THRESHOLD DATA_NET_IB_SG_LOWER_THRESHOLD
-`endif
+// // * defines the lower threshold for the Stop&Go flow control between datanet routers
+// `ifndef DATA_NET_IB_SG_LOWER_THRESHOLD
+//   `define DATA_NET_IB_SG_LOWER_THRESHOLD DATA_NET_IB_SG_LOWER_THRESHOLD
+// `endif
 
-// * Defines the width of the Unit ID, but if not defined externally
-// * UID is unique for each Unit
-`ifndef DATA_NET_FLIT_UNIT_ID_w 
-  `define DATA_NET_FLIT_UNIT_ID_w DATA_NET_FLIT_UNIT_ID_w
-`endif
+// // * Defines the width of the Unit ID, but if not defined externally
+// // * UID is unique for each Unit
+// `ifndef DATA_NET_FLIT_UNIT_ID_w 
+//   `define DATA_NET_FLIT_UNIT_ID_w DATA_NET_FLIT_UNIT_ID_w
+// `endif
 
-// * Defines the width of type of a component, only if not defined externally
-`ifndef DATA_NET_FLIT_UNIT_TYPE_w
-  `define DATA_NET_FLIT_UNIT_TYPE_w DATA_NET_FLIT_UNIT_TYPE_w
-`endif
+// // * Defines the width of type of a component, only if not defined externally
+// `ifndef DATA_NET_FLIT_UNIT_TYPE_w
+//   `define DATA_NET_FLIT_UNIT_TYPE_w DATA_NET_FLIT_UNIT_TYPE_w
+// `endif
 
-// * Defines the width for the message type, if not defined externally
-`ifndef DATA_NET_FLIT_MSG_TYPE_w
-  `define DATA_NET_FLIT_MSG_TYPE_w DATA_NET_FLIT_MSG_TYPE_w
-`endif
+// // * Defines the width for the message type, if not defined externally
+// `ifndef DATA_NET_FLIT_MSG_TYPE_w
+//   `define DATA_NET_FLIT_MSG_TYPE_w DATA_NET_FLIT_MSG_TYPE_w
+// `endif
 
-// * defines the width of a flit, when is not defined yet
-`ifndef DATA_NET_FLIT_w
-  `define DATA_NET_FLIT_w DATA_NET_FLIT_w
-`endif
+// // * defines the width of a flit, when is not defined yet
+// `ifndef DATA_NET_FLIT_w
+//   `define DATA_NET_FLIT_w DATA_NET_FLIT_w
+// `endif
 
-// * defines the width of a phit, when is not defined yet
-`ifndef DATA_NET_PHIT_w
-  `define DATA_NET_PHIT_w DATA_NET_PHIT_w
-`endif
+// // * defines the width of a phit, when is not defined yet
+// `ifndef DATA_NET_PHIT_w
+//   `define DATA_NET_PHIT_w DATA_NET_PHIT_w
+// `endif
 
-// * defines the number of Virtual Networks, when is not defined yet
-`ifndef DATA_NET_NUM_VN
-  `define DATA_NET_NUM_VN DATA_NET_NUM_VN
-`endif  
+// // * defines the number of Virtual Networks, when is not defined yet
+// `ifndef DATA_NET_NUM_VN
+//   `define DATA_NET_NUM_VN DATA_NET_NUM_VN
+// `endif  
 
-// * defines the number of Virtual Channels per Virtual Networks, when is not defined yet
-`ifndef DATA_NET_NUM_VC_PER_VN
-  `define DATA_NET_NUM_VC_PER_VN DATA_NET_NUM_VC_PER_VN
-`endif  
+// // * defines the number of Virtual Channels per Virtual Networks, when is not defined yet
+// `ifndef DATA_NET_NUM_VC_PER_VN
+//   `define DATA_NET_NUM_VC_PER_VN DATA_NET_NUM_VC_PER_VN
+// `endif  
 
 //*************** COMMON DEFINITIONS FOR PHIT AND FLIT ******************************************************
 

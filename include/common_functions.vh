@@ -33,7 +33,7 @@
 // Create Date: November 9, 2016
 // File Name: common_functions.vh
 // Module Name:
-// Project Name: 
+// Project Name: DataNoC
 // Target Devices: 
 // Description: 
 //

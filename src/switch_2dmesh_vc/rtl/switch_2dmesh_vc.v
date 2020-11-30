@@ -53,6 +53,8 @@
 `include "net_common.h"
 `include "net_2dmesh.h"
 `include "data_net_virtual_channel.h"
+`include "data_net_message_format.h"
+//`include "synthetic_traffic_generator.h"
 
 module switch_2dmesh_vc #(
   parameter ID                 = 0,
@@ -84,6 +86,7 @@ module switch_2dmesh_vc #(
   parameter PHIT_SIZE_S        = 64,
   parameter FLIT_TYPE_SIZE     = 2,
   parameter BROADCAST_SIZE     = 5,
+  parameter NUM_PORTS          = 5,
   parameter NUM_VC             = 1,                 // Number of Virtual Channels supported for each Virtual Network
   parameter NUM_VN             = 3,                 // Number of Virtual Networks supported
   //
@@ -1281,6 +1284,7 @@ for (j=0; j<NUM_VN; j=j+1) begin
     .FLIT_SIZE               ( FLIT_SIZE                         ),
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            ),
     .VN_WEIGHT_VECTOR_w      ( VN_WEIGHT_VECTOR_w                )
@@ -1309,6 +1313,7 @@ for (j=0; j<NUM_VN; j=j+1) begin
     .FLIT_SIZE               ( FLIT_SIZE                         ),
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            ),
     .VN_WEIGHT_VECTOR_w      ( VN_WEIGHT_VECTOR_w                )
@@ -1337,6 +1342,7 @@ for (j=0; j<NUM_VN; j=j+1) begin
     .FLIT_SIZE               ( FLIT_SIZE                         ),
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            )
   )VA_NORTH (
@@ -1364,6 +1370,7 @@ for (j=0; j<NUM_VN; j=j+1) begin
     .FLIT_SIZE               ( FLIT_SIZE                         ),
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            )
   )VA_SOUTH (
@@ -1391,6 +1398,7 @@ for (j=0; j<NUM_VN; j=j+1) begin
     .FLIT_SIZE               ( FLIT_SIZE                         ),
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            )
   )VA_WEST (
@@ -1419,6 +1427,7 @@ end //end for NUM_VN
     .FLIT_SIZE                 ( FLIT_SIZE                         ),
     .FLIT_TYPE_SIZE            ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE            ( BROADCAST_SIZE                    ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                    ( NUM_VC                            ),
     .NUM_VN                    ( NUM_VN                            ),
     .ENABLE_VN_WEIGHTS_SUPPORT ( ENABLE_VN_WEIGHTS_SUPPORT       )
@@ -1441,6 +1450,7 @@ end //end for NUM_VN
     .FLIT_SIZE               ( FLIT_SIZE                         ),
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            ),
     .ENABLE_VN_WEIGHTS_SUPPORT ( ENABLE_VN_WEIGHTS_SUPPORT       )
@@ -1463,6 +1473,7 @@ end //end for NUM_VN
     .FLIT_SIZE               ( FLIT_SIZE                         ),
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            ),
     .ENABLE_VN_WEIGHTS_SUPPORT ( ENABLE_VN_WEIGHTS_SUPPORT       )
@@ -1485,6 +1496,7 @@ end //end for NUM_VN
     .FLIT_SIZE               ( FLIT_SIZE                         ),
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            ),
     .ENABLE_VN_WEIGHTS_SUPPORT ( ENABLE_VN_WEIGHTS_SUPPORT       )
@@ -1507,6 +1519,7 @@ end //end for NUM_VN
     .FLIT_SIZE               ( FLIT_SIZE                         ),
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            ),
     .ENABLE_VN_WEIGHTS_SUPPORT ( ENABLE_VN_WEIGHTS_SUPPORT       )
@@ -1529,6 +1542,7 @@ end //end for NUM_VN
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
     .PHIT_SIZE               ( PHIT_SIZE_E                       ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            ),
     .VN_WEIGHT_VECTOR_w      ( VN_WEIGHT_VECTOR_w                )
@@ -1565,6 +1579,7 @@ end //end for NUM_VN
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
     .PHIT_SIZE               ( PHIT_SIZE_L                       ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            )
     ) OUTPUT_LOCAL (.clk(clk),
@@ -1600,6 +1615,7 @@ end //end for NUM_VN
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
     .PHIT_SIZE               ( PHIT_SIZE_N                       ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            )
     ) OUTPUT_NORTH (.clk(clk),
@@ -1635,6 +1651,7 @@ end //end for NUM_VN
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
     .PHIT_SIZE               ( PHIT_SIZE_S                       ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            )
     ) OUTPUT_SOUTH (.clk(clk),
@@ -1670,6 +1687,7 @@ end //end for NUM_VN
     .FLIT_TYPE_SIZE          ( FLIT_TYPE_SIZE                    ),
     .BROADCAST_SIZE          ( BROADCAST_SIZE                    ),
     .PHIT_SIZE               ( PHIT_SIZE_W                       ),
+    .NUM_PORTS               ( NUM_PORTS                         ),
     .NUM_VC                  ( NUM_VC                            ),
     .NUM_VN                  ( NUM_VN                            )
     ) OUTPUT_WEST (.clk(clk),

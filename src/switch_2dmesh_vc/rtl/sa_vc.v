@@ -62,6 +62,7 @@ module SA_VC #(
   parameter FLIT_SIZE                 = 64,
   parameter FLIT_TYPE_SIZE            = 2,
   parameter BROADCAST_SIZE            = 5,
+  parameter NUM_PORTS                 = 5,
   parameter NUM_VC                    = 1,                 // Number of Virtual Channels supported for each Virtual Network
   parameter NUM_VN                    = 3,                 // Number of Virtual Networks supported
   parameter VN_WEIGHT_VECTOR_w        = 20,
@@ -213,7 +214,7 @@ generate
 
     assign vector_grants_in_to_RR_prio_not_zeros[i] = VN_X_VC[i].grants_in_not_zeros;
     assign vector_grant_to_end[((i*NUM_PORTS)+(NUM_PORTS-1))-:NUM_PORTS] = VN_X_VC[i].grants_in;
-    assign vector_grants_id_to_end[((i*3)+(3-1))-:3] = VN_X_VC[i].grants_in_id;
+    assign vector_grants_id_to_end[((i*NUM_PORTS_w)+(NUM_PORTS_w-1))-:NUM_PORTS_w] = VN_X_VC[i].grants_in_id;
     end
 
   assign vector_in_RR_prio = vector_grants_in_to_RR_prio_not_zeros;
@@ -284,7 +285,7 @@ assign grants_in_id_RR_prio = (|grants_in_RR_P_per_VN[((WEIGTH*NUM_VC)+(NUM_VC-1
                               (|grants_in_RR_VN) ? grants_in_id_RR_P_per_VN[((grants_in_id_RR_VN*bits_VN_X_VC)+(bits_VN_X_VC-1))-:bits_VN_X_VC] :                   //Different VN that weight is granted
                                                                                                                            `V_ZERO(bits_VN_X_VC);                   //no one is granted
 
-assign grants_in_id_after_prio = (GRANTS_DONE) ? vector_grants_id_to_end[((grants_in_id_RR_prio*3)+(3-1))-:3] : `V_ZERO(3);
+assign grants_in_id_after_prio = (GRANTS_DONE) ? vector_grants_id_to_end[((grants_in_id_RR_prio*NUM_PORTS_w)+(NUM_PORTS_w-1))-:NUM_PORTS_w] : `V_ZERO(NUM_PORTS_w);
 assign grants_in_after_prio = (GRANTS_DONE) ? vector_grant_to_end[((grants_in_id_RR_prio*NUM_PORTS)+(NUM_PORTS-1))-:NUM_PORTS] : `V_ZERO(NUM_PORTS);
 //------------------------------------------------------------------------------------------------------------------------------------
 //Already filtered by WEIGHT

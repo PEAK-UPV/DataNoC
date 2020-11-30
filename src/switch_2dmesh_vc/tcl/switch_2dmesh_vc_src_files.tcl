@@ -18,7 +18,6 @@ set src_verilog_files [list \
  "[file normalize "${ROOT_PATH}/src/switch_2dmesh_vc/rtl/sa_vc.v"]"\
  "[file normalize "${ROOT_PATH}/src/switch_2dmesh_vc/rtl/va_dynamic.v"]"\
  "[file normalize "${ROOT_PATH}/src/switch_2dmesh_vc/rtl/va_local_dynamic.v"]"\
- "[file normalize "${ROOT_PATH}/src/switch_2dmesh_vc/rtl/va_static.v"]"\
  "[file normalize "${ROOT_PATH}/src/switch_2dmesh_vc/rtl/switch_2dmesh_vc.v"]"
 ]
 

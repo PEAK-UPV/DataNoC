@@ -63,7 +63,8 @@ module network_injector #(
   parameter QUEUE_SIZE                 = 8,                                                  // queue size (per VN)
   parameter SG_UPPER_THOLD             = 5,                                                  // stop flow control threshold
   parameter SG_LOWER_THOLD             = 4,                                                  // go flow control threshold
-  parameter NUM_VC                     = 1,                                                  // Number of Virtual Channels supported for each Virtual Network
+  parameter NUM_VC                     = 1,
+  parameter NUM_PORTS                  = 5,                                                  // Number of ports used in this network
   parameter NUM_VN                     = 3,                                                  // Number of Virtual Networks supported
   parameter VN_w                       = 2,                                                  // VN width
   parameter NUM_VN_X_VC                = NUM_VC * NUM_VN,                                    // number of queues (VNxVC)
@@ -98,7 +99,6 @@ module network_injector #(
   localparam bits_VN_X_VC              = Log2_w(NUM_VN_X_VC),
   localparam FIFO_SIZE                 = 2,
   localparam FIFO_W                    = Log2_w(FIFO_SIZE),
-  localparam NUM_PORTS                 = `NUM_PORTS,                                                   // Number of ports used in this network
   localparam NUM_PORTS_w               = Log2_w(NUM_PORTS),                                  // Number of bits needed to code NUM_PORTS number
   //localparam bits_VN                   = `DATA_NET_VN_w,
   localparam bits_VN                   = Log2_w(NUM_VN),
@@ -112,7 +112,6 @@ module network_injector #(
   localparam long_VC_assigns_per_VN    = ((bits_VN_X_VC_AND_PORTS+1) * NUM_VC),              // The same last but only for one VN
   localparam long_VC_assigns_NI        = ((bits_VN_X_VC+1) * NUM_VN_X_VC),                   // Bits neded to store which input REQ (expresed in binary) is located in each VC
   localparam long_VC_assigns_NI_per_VN = ((bits_VN_X_VC+1) * NUM_VC),                        // The same last but only for one VN
-  //localparam long_WEIGTHS              = `DATA_NET_VN_PRIORITY_VECTOR_w,                     // Number of bits needed to code NUM_VC number into weitgths priorities vector
   localparam long_WEIGTHS              = VN_WEIGHT_VECTOR_w,                                 // Number of bits needed to code NUM_VC number into weitgths priorities vector
   localparam long_vector_grants_id     = 3 * NUM_VN_X_VC,                                    // Number of bits needed to save the port id which is granted in each VC
   localparam FLIT_SIZE_VC              = FLIT_SIZE * NUM_VN_X_VC,                            // Size of full bus with all flit signals that belongs to each port
@@ -432,6 +431,7 @@ endgenerate
      .FLIT_TYPE_SIZE     ( FLIT_TYPE_SIZE           ),
      .PHIT_SIZE          ( PHIT_SIZE                ),
      .BROADCAST_SIZE     ( BROADCAST_SIZE           ),
+     .NUM_PORTS          ( NUM_PORTS                ),
      .NUM_VC             ( NUM_VC                   ),
      .NUM_VN             ( NUM_VN                   ),
      .VN_WEIGHT_VECTOR_w ( VN_WEIGHT_VECTOR_w       )
@@ -453,6 +453,7 @@ endgenerate
     .FLIT_TYPE_SIZE            ( FLIT_TYPE_SIZE            ),
     .BROADCAST_SIZE            ( BROADCAST_SIZE            ),
     .PHIT_SIZE                 ( PHIT_SIZE                 ),
+    .NUM_PORTS                 ( NUM_PORTS                 ),
     .NUM_VC                    ( NUM_VC                    ),
     .NUM_VN                    ( NUM_VN                    ),
     .ENABLE_VN_WEIGHTS_SUPPORT ( ENABLE_VN_WEIGHTS_SUPPORT )
@@ -485,6 +486,7 @@ endgenerate
   .FLIT_TYPE_SIZE     ( FLIT_TYPE_SIZE           ),
   .PHIT_SIZE          ( PHIT_SIZE                ),
   .BROADCAST_SIZE     ( BROADCAST_SIZE           ),
+  .NUM_PORTS                 ( NUM_PORTS         ),
   .NUM_VC             ( NUM_VC                   ),
   .NUM_VN             ( NUM_VN                   )
   )OUTPUT_NI_inst0 (
